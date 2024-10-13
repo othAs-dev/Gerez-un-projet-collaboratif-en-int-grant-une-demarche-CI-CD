@@ -2,7 +2,7 @@
 
 Clone project:
 
-> git clone XXXXX
+> git clone git@github.com:othAs-dev/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD.git
 
 ## Front-end 
 
