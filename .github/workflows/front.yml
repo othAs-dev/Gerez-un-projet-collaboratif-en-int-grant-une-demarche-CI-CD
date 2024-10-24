@@ -42,7 +42,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           coverage-summary-path: front/coverage/bobapp/coverage-summary.json
-          protected-branches: '["main"]'
+          protected-branches: '["develop"]'
           badges-directory: badges/bobapp
 
       - name: Commit and push badges
