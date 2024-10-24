@@ -82,6 +82,7 @@ jobs:
             -Dproject.settings=back/sonar-project.properties
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
+          run: echo "$SONAR_TOKEN"
 
   deployment:
     runs-on: ubuntu-latest
