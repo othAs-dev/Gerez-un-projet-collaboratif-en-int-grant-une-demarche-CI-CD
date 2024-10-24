@@ -48,7 +48,7 @@ jobs:
           echo "No changes to commit"
           else
             git commit -m "Update back-end coverage badges"
-            git push origin main
+            git push origin develop
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
