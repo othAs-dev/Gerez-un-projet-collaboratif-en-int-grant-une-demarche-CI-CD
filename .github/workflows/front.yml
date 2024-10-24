@@ -37,28 +37,6 @@ jobs:
           name: Front-report
           path: front/coverage
 
-      - name: Badge with front coverage
-        uses:  demyanets/angular-coverage-badges-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          coverage-summary-path: front/coverage/bobapp/coverage-summary.json
-          protected-branches: '["develop"]'
-          badges-directory: badges/bobapp
-
-      - name: Commit and push badges
-        run: |
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
-          git add badges/bobapp
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update front-end coverage badges"
-            git push origin develop
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   quality:
     runs-on: ubuntu-latest
     needs: tests
