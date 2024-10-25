@@ -3,6 +3,8 @@ name: back
 on:
   push:
     branches: [ "develop" ]
+    paths:
+      - "back/**"
   pull_request:
     branches: [ "develop" ]
 
