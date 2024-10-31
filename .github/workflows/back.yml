@@ -2,11 +2,11 @@ name: back
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "main" ]
     paths:
       - "back/**"
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "main" ]
 
 jobs:
   tests:
