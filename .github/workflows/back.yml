@@ -40,9 +40,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch all branches
-        run: git fetch --all
-
       - name: Download Back Report
         uses: actions/download-artifact@v4
         with:
@@ -59,8 +56,9 @@ jobs:
         run: cd back && mvn clean install
 
       - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@v2.3.0
+        uses: sonarSource/sonarcloud-github-action@master
         with:
-          args: -Dproject.settings=back/sonar-project.properties
+          args:
+            -Dproject.settings=back/sonar-project.properties
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
