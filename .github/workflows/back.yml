@@ -1,4 +1,4 @@
-name: back
+name: back-workflow
 
 on:
   push:
@@ -7,8 +7,6 @@ on:
       - "back/**"
   pull_request:
     branches: [ "main" ]
-    paths:
-      - "back/**"
 
 jobs:
   tests:
@@ -64,3 +62,29 @@ jobs:
             -Dproject.settings=back/sonar-project.properties
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
+
+  deployment:
+    runs-on: ubuntu-latest
+    needs: quality
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build back-end
+        run: |
+          cd back
+          mvn clean install 
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image for back-end
+        uses: docker/build-push-action@v2
+        with:
+          context: ./back
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/bobapp-back:latest
