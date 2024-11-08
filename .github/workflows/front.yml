@@ -7,6 +7,8 @@ on:
       - "front/**"
   pull_request:
     branches: [ "main" ]
+    paths:
+      - "front/**"
 
 jobs:
   tests:
