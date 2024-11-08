@@ -1,4 +1,4 @@
-name: front-workflow
+name: front
 
 on:
   push:
@@ -71,7 +71,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install dependencies for front-end
         run: |
