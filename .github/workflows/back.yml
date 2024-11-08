@@ -1,4 +1,4 @@
-name: back-workflow
+name: back
 
 on:
   push:
@@ -56,10 +56,9 @@ jobs:
         run: cd back && mvn clean install
 
       - name: SonarCloud Scan
-        uses: sonarSource/sonarcloud-github-action@master
+        uses: sonarsource/sonarcloud-github-action@v2.3.0
         with:
-          args:
-            -Dproject.settings=back/sonar-project.properties
+          args: -Dproject.settings=back/sonar-project.properties
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACK }}
 
