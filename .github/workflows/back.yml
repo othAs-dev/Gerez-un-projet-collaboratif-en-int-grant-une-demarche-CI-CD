@@ -40,6 +40,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Fetch all branches
+        run: git fetch --all
+
       - name: Download Back Report
         uses: actions/download-artifact@v4
         with:
